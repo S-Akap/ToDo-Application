@@ -1,0 +1,30 @@
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <div class="col-md-3 mb-2 mb-md-0">
+            <a href="{% url 'todo:index' %}" class="d-inline-flex link-body-emphasis text-decoration-none">
+                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+            </a>
+        </div>
+        {% if user.is_authenticated %}
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{% url 'todo:home' %}" class="nav-link px-2">Home</a></li>
+            <li><a href="{% url 'todo:class_list' %}" class="nav-link px-2">Class</a></li>
+            <li><a href="{% url 'todo:task_list' %}" class="nav-link px-2">Task</a></li>
+            <li><a href="{% url 'todo:account'  user.pk %}" class="nav-link px-2">Account</a></li>
+        </ul>
+        <div class="col-md-3 text-end">
+            <form method="post" action="{% url 'todo:logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Log-Out</button>
+            </form>
+        </div>
+        {% else %}
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        </ul>
+        <div class="col-md-3 text-end">
+            <a href="{% url 'todo:login' %}" class="btn btn-outline-primary me-2">Log-In</a>
+            <a href="{% url 'todo:signup' %}" class="btn btn-primary">Sign-Up</a>
+        </div>
+        {% endif %}
+    </header>
+</div>

@@ -1,0 +1,13 @@
+{% extends "base/_detail.html" %}
+
+{% block title %}User Information{% endblock title %}
+{% block content %}
+<p><strong>Username:</strong>{{ user.username }}</p>
+<p><strong>Staff:</strong>{{ user.is_staff }}</p>
+<p><strong>Superuser:</strong>{{ user.is_superuser }}</p>
+{% endblock content %}
+{% block link %}
+<a href="{% url 'todo:account_update' user.pk %}">Edit</a> |
+<a href="{% url 'todo:account_delete' user.pk %}">Delete</a> |
+<a href="{% url 'todo:password_update' user.pk %}">Change Password</a>
+{% endblock link %}

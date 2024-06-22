@@ -1,0 +1,27 @@
+<div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom">Task List</h2>
+    {% if is_task_list %}
+    <div class="d-flex flex-column">
+        <a href="{% url 'todo:task_create' %}" class="icon-link">Create New Task<svg class="bi"><use xlink:href="#chevron-right"/></svg></a>
+        <a href="{% url 'todo:task_create_with_class' %}" class="icon-link">Create New Task with Class<svg class="bi"><use xlink:href="#chevron-right"/></svg></a>
+    </div>
+    {% endif %}
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        {% for task in tasks %}
+        <div class="feature col">
+            <h3 class="fs-2 text-body-emphasis">{{ task.title }}</h3>
+            <p><strong>Due Date:</strong>{{ task.due_date }}</p>
+            <p><strong>Content:</strong> {{ task.content| truncatechars:20 }}</p>
+            {% if is_list %}
+            <p><strong>Completed:</strong> {{ task.is_completed }}</p>
+            {% endif %}
+            <a href="{% url 'todo:task_detail' pk=task.pk %}" class="icon-link">
+                詳細ページ<svg class="bi"><use xlink:href="#chevron-right"/></svg>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% if is_home %}
+    <a href="{% url 'todo:task_list' %}" class="icon-link">Show All<svg class="bi"><use xlink:href="#chevron-right"/></svg></a>
+    {% endif %}
+</div>

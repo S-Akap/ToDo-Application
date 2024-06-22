@@ -1,0 +1,10 @@
+{% extends "base/_base.html" %}
+{% block main %}
+{% if not is_home %}
+{% if is_class_list %}{% include "base/_class_list.html" %}{% endif %}
+{% if is_task_list %}{% include "base/_task_list.html" %}{% endif %}
+{% else %}
+{% include "base/_class_list.html" %}
+{% include "base/_task_list.html" %}
+{% endif %}
+{% endblock main %}

@@ -1,0 +1,15 @@
+{% extends "base/_detail.html" %}
+
+{% block title %}{{ task.title }}{% endblock title %}
+{% block content %}
+<p><strong>Class:</strong><a href="{% url 'todo:class_detail' task.class_reference.pk %}">{{ task.class_reference.lecture_name }}</a></p>
+<p><strong>Content:</strong> {{ task.content }}</p>
+<p><strong>Due Date:</strong> {{ task.due_date }}</p>
+<p><strong>Submission Place:</strong> {{ task.submission_place }}</p>
+<p><strong>Completed:</strong> {{ task.is_completed }}</p>
+{% endblock content %}
+{% block link %}
+<a href="{% url 'todo:task_update' task.pk %}">Edit</a> |
+<a href="{% url 'todo:task_delete' task.pk %}">Delete</a> |
+<a href="{% url 'todo:task_list' %}">Back to Class List</a>
+{% endblock link %}

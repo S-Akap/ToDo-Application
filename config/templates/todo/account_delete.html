@@ -1,0 +1,9 @@
+{% extends "base/_base.html" %}
+{% block main %}
+<div class="d-flex align-items-center py-4 ">
+    <div class="form-signin w-100 m-auto">
+        {% include "base/_delete.html" with name=user.username%}
+        <a href="javascript:history.back();" class="btn btn-outline-primary w-100 py-2">Cancel</a>
+    </div>
+</div>
+{% endblock main %}

@@ -1,0 +1,20 @@
+<div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom">Class List</h2>
+    {% if is_class_list %}
+    <a href="{% url 'todo:class_create' %}" class="icon-link">Create New Class<svg class="bi"><use xlink:href="#chevron-right"/></svg></a>
+    {% endif %}
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        {% for class in classes %}
+        <div class="feature col">
+            <h3 class="fs-2 text-body-emphasis">{{ class.lecture_name }}</h3>
+            <p><strong>Instructor:</strong>{{ class.instructor }}</p>
+            <a href="{% url 'todo:class_detail' pk=class.pk %}" class="icon-link">
+                詳細ページ<svg class="bi"><use xlink:href="#chevron-right"/></svg>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% if is_home %}
+    <a href="{% url 'todo:class_list' %}" class="icon-link">Show All<svg class="bi"><use xlink:href="#chevron-right"/></svg></a>
+    {% endif %}
+</div>

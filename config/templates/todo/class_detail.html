@@ -1,0 +1,15 @@
+{% extends "base/_detail.html" %}
+
+{% block title %}{{ class.lecture_name }}{% endblock title %}
+{% block content %}
+<p><strong>Instructor:</strong> {{ class.instructor }}</p>
+<p><strong>Contact Info:</strong> {{ class.contact_info }}</p>
+{% endblock content %}
+{% block link %}
+<a href="{% url 'todo:class_update' class.pk %}">Edit</a> |
+<a href="{% url 'todo:class_delete' class.pk %}">Delete</a> |
+<a href="{% url 'todo:class_list' %}">Back to Class List</a>
+{% endblock link %}
+{% block extra %}
+{% include "base/_task_list.html" %}
+{% endblock extra %}

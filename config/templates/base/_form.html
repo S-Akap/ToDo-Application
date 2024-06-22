@@ -1,0 +1,13 @@
+<form action="" method="POST">
+    <h1 class="h3 mb-3 fw-normal">{{ process_name }} Form</h1>
+    {{ form.non_field_errors }}
+    {% for field in form %}
+    <div class="{% if field.field.widget.input_type == 'checkbox' %}form-check text-start my-3{% else %}form-floating{% endif %}">
+        {{ field }}
+        {{ field.errors }}
+        <label for="{{ field.id_for_label }}">{{field.name}}</label>
+    </div>
+    {% endfor %}
+    {% csrf_token %}
+    <button class="btn btn-primary w-100 py-2" type="submit">{{ process_name }}</button>
+</form>
